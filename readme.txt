@@ -1,6 +1,4 @@
-Добавляем предварительно полученые ключи от rapidapi(weatherbit) и telegram в config-sample.py.
 
-Переименовываем config-sample.py в config.py
 
 pip install -r requirements.txt
 

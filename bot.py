@@ -1,7 +1,10 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import requests
 import json
-import config as cfg
+
+
+RAPIDAPI_API_KEY = "0307470954mshf3c1844bf9a9c4cp130446jsn944800e9f971"
+TELEGRAM_API_KEY = '1374283548:AAHO3h2OVUTXK4znw1A0fQvy-51Wu5bIA-0'
 
 def hello(update, context):
     update.message.reply_text(
@@ -17,7 +20,7 @@ def echo(update, context):
 
     headers = {
         'x-rapidapi-host': "weatherbit-v1-mashape.p.rapidapi.com",
-        'x-rapidapi-key': cfg.RAPIDAPI_API_KEY
+        'x-rapidapi-key': RAPIDAPI_API_KEY
     }
 
     response = requests.request("GET", url, headers=headers, params=querystring)
@@ -31,7 +34,7 @@ def echo(update, context):
     update.message.reply_text(forecast)
 
 
-updater = Updater(cfg.TELEGRAM_API_KEY, use_context=True)
+updater = Updater(TELEGRAM_API_KEY, use_context=True)
 dp = updater.dispatcher
 dp.add_handler(CommandHandler('hello', hello))
 dp.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
